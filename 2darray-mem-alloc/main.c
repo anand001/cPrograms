@@ -16,7 +16,7 @@ main ()
   int rows = 3, columns = 3;
   int i, j, count = 0;
 /**************** Method - 1 ***************************************/
-  int **arr1 = (int **) malloc (rows * columns * sizeof (int));
+  int *arr1 = (int *) malloc (rows * columns * sizeof (int));
 
   //Array Access:
   for (i = 0; i < rows; i++)
@@ -28,8 +28,9 @@ main ()
       printf ("%d", *(arr1 + i * columns + j));
 
   // free is required so as to make other parts work accordingly
-//  for (i = 0; i < rows*columns; i++)
-//    free (arr1[i]);
+  // free memory:
+  free (arr1);
+
 
 /************ Method - 3 *******************************************/
   int **arr3 = (int **) malloc (sizeof (int *) * rows);
@@ -46,7 +47,7 @@ main ()
     for (j = 0; j < columns; j++)
       printf ("%d", arr3[i][j]);
 
-
+// free memory:
   for (int i = 0; i < columns; i++)
     free (arr3[i]);
   free (arr3);
